@@ -12,7 +12,7 @@
     <condition property="password" value=""> <not> <isset property="password"/> </not> </condition>
     <condition property="testlevel" value=""> <not> <isset property="testlevel"/> </not> </condition>
 
-    <taskdef resource="tools/migration_tools/com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
             <pathelement location="tools/migration_tools/ant-salesforce.jar" />        	
         </classpath>
