@@ -19,7 +19,7 @@
 	<replace file="../code/src/package.xml"
 		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 		 value="" />	    
-      <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testLevel="${testLevel}" deployRoot="src" />
+      <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testLevel="${testLevel}" deployRoot="../code/src" />
     </target>
    <!-- 
    <target name="runTest">
