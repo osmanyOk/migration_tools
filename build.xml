@@ -1,4 +1,7 @@
-<project name="Sample usage of Salesforce Ant tasks" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
+<!-- <project name="Sample usage of Salesforce Ant tasks" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
+    <property environment="env"/>
+-->
+<project name="Sample usage of Salesforce Ant tasks" default="deploy" xmlns:sf="antlib:com.salesforce">
     <property environment="env"/>
 
     <!-- Setting default value for username, password and session id properties to empty string 
@@ -9,7 +12,7 @@
     <condition property="password" value=""> <not> <isset property="password"/> </not> </condition>
     <condition property="testlevel" value=""> <not> <isset property="testlevel"/> </not> </condition>
 
-    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+    <taskdef resource="tools/migration_tools/com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
             <pathelement location="tools/migration_tools/ant-salesforce.jar" />        	
         </classpath>
