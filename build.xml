@@ -16,6 +16,9 @@
     </taskdef>
 	
     <target name="deploy">
+	<replace file="src/package.xml"
+		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
+		 value="" />	    
       <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testLevel="${testLevel}" deployRoot="src" />
     </target>
    <!-- 
