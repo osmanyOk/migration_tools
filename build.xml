@@ -7,7 +7,7 @@
     -->
     <condition property="username" value=""> <not> <isset property="username"/> </not> </condition>
     <condition property="password" value=""> <not> <isset property="password"/> </not> </condition>
-    <condition property="testLevel" value=""> <not> <isset property="testLevel"/> </not> </condition>
+    <condition property="testlevel" value=""> <not> <isset property="testlevel"/> </not> </condition>
 
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
