@@ -11,12 +11,12 @@
 
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
-            <pathelement location="ant-salesforce.jar" />        	
+            <pathelement location="tools/migration_tools/ant-salesforce.jar" />        	
         </classpath>
     </taskdef>
 	
     <target name="deploy">
-	<replace file="src/package.xml"
+	<replace file="code/src/package.xml"
 		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 		 value="" />	    
       <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testLevel="${testLevel}" deployRoot="src" />
