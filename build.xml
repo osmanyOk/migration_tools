@@ -19,14 +19,15 @@
     </taskdef>
 	
     <target name="deploy">
-        <echo message="deploying from metadata" />
+        <!--
+	<echo message="deploying from metadata" />
         <echo message="ANT_HOME=${ant.home}"/>
         <echo message="BASEDIR=${basedir}"/>
         <echo message="ANT_CORE_LIB=${ant.core.lib}"/>
         <echo message="JAVA_VERSION=${ant.java.version}"/>
         <echo message="ANT_LIBRARY_DIR=${ant.library.dir}"/>
         <echo message="classpath=${java.class.path}"/>	
-	    
+	-->    
 	<replace file="../code/src/package.xml"
 		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 		 value="" />	    
