@@ -27,9 +27,9 @@
 	
 	
 <target name="testgulp">
-	<exec executable="gulp" osfamily="unix" dir="${component.source.dir}">
+	<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}">
 		<arg line="@{gulpargs}"/>
-	</exec>
+	</exec>	
 </target>	
 	
    <!-- 
