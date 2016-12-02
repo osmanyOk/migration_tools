@@ -18,21 +18,20 @@
         </classpath>
     </taskdef>
 	
-    <target name="deploy">
-        <!--
-	<echo message="deploying from metadata" />
-        <echo message="ANT_HOME=${ant.home}"/>
-        <echo message="BASEDIR=${basedir}"/>
-        <echo message="ANT_CORE_LIB=${ant.core.lib}"/>
-        <echo message="JAVA_VERSION=${ant.java.version}"/>
-        <echo message="ANT_LIBRARY_DIR=${ant.library.dir}"/>
-        <echo message="classpath=${java.class.path}"/>	
-	-->    
-	<replace file="../code/src/package.xml"
+<target name="deploy" depends="testgulp">
+	<replace file="src/package.xml"
 		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 		 value="" />	    
-      <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="../code/src" />
-    </target>
+  <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="src"/>
+</target>
+	
+	
+<target name="testgulp">
+	<exec executable="gulp" osfamily="unix" dir="${component.source.dir}">
+		<arg line="@{gulpargs}"/>
+	</exec>
+</target>	
+	
    <!-- 
    <target name="runTest">
       <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" deployRoot="test" />
