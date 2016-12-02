@@ -19,15 +19,15 @@
     </taskdef>
 	
 <target name="deploy" depends="testgulp">
-	<replace file="src/package.xml"
+	<replace file="src/src/package.xml"
 		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 		 value="" />	    
-  <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="src"/>
+  <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="src/src"/>
 </target>
 	
 	
 <target name="testgulp">
-	<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}">
+	<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}/testGulp">
 		<arg line="@{gulpargs}"/>
 	</exec>	
 </target>	
