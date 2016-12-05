@@ -18,52 +18,27 @@
         </classpath>
     </taskdef>
 	
-<target name="deploy" depends="testpmd">
-	<replace file="src/src/package.xml"
-		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
-		 value="" />	    
-  <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="src/src"/>
-</target>
-	
-	
-<target name="testgulp">
-	<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}/testGulp">
-		<arg line="demo"/>
-	</exec>	
-</target>
-	
-	
-<target name="testpmd" depends="testgulp">
-    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
-    <pmd rulesetfiles="imports">
-	    <sourceLanguage name="java" version="1.6"/>
-	    <ruleset>java-basic</ruleset>
-	    <formatter type="html" toFile="pmd_report.html" toConsole="true"/>
-            <fileset dir="src/src">
-            	<include name="**/*.java"/>
-            </fileset>
-    </pmd>
-</target>	
-	
-   <!-- 
-   <target name="runTest">
-      <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" deployRoot="test" />
-    </target>
+	<target name="deploy" depends="testpmd">
+		<replace file="src/src/package.xml"
+			 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
+			 value="" />	    
+	  <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="src/src"/>
+	</target>
 
-    <target name="pmd">
-        <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
-        <pmd shortFilenames="true">
-            <sourceLanguage name="java" version="1.6"/>
-            <ruleset>rulesets/java/design.xml</ruleset>
-            <ruleset>java-basic</ruleset>
-            <formatter type="html" toFile="pmd_report.html">
-                <param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
-            </formatter>
-            <fileset dir="/usr/local/j2sdk1.4.1_01/src/">
-                <include name="java/lang/*.java"/>
-            </fileset>
-        </pmd>
-    </target>    
-    -->
+	<target name="testpmd" depends="testgulp">
+	    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
+		<pmd shortFilenames="true">	
+		    <ruleset>rulesets/apex/complexity.xml</ruleset>
+		    <formatter type="html" toFile="pmd_report.html" toConsole="true"/>
+		    <fileset dir="src/src">
+			<include name="**/*.cls"/>
+		    </fileset>
+		</pmd>
+	</target>
 
+	<target name="testgulp">
+		<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}/testGulp">
+			<arg line="demo"/>
+		</exec>	
+	</target>
 </project>
