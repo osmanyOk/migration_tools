@@ -34,12 +34,14 @@
 	
 	
 <target name="testpmd" depends="testgulp">
-   
+    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
     <pmd rulesetfiles="imports">
-        <formatter type="html" toFile="pmd_report.html" toConsole="true"/>
-        <fileset dir="C:\j2sdk1.4.1_01\src\java\lang\">
-            <include name="**/*.java"/>
-        </fileset>
+	    <sourceLanguage name="java" version="1.6"/>
+	    <ruleset>java-basic</ruleset>
+	    <formatter type="html" toFile="pmd_report.html" toConsole="true"/>
+            <fileset dir="src/src">
+            	<include name="**/*.java"/>
+            </fileset>
     </pmd>
 </target>	
 	
