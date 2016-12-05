@@ -18,7 +18,7 @@
         </classpath>
     </taskdef>
 	
-<target name="deploy" depends="testgulp">
+<target name="deploy" depends="testpmd">
 	<replace file="src/src/package.xml"
 		 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 		 value="" />	    
@@ -30,6 +30,17 @@
 	<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}/testGulp">
 		<arg line="demo"/>
 	</exec>	
+</target>
+	
+	
+<target name="testpmd" depends="testgulp">
+    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
+    <pmd rulesetfiles="imports">
+        <formatter type="html" toFile="pmd_report.html" toConsole="true"/>
+        <fileset dir="C:\j2sdk1.4.1_01\src\java\lang\">
+            <include name="**/*.java"/>
+        </fileset>
+    </pmd>
 </target>	
 	
    <!-- 
