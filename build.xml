@@ -27,7 +27,7 @@
 
 	<path id="pmd.classpath">
 	    <pathelement location="${build}"/>
-	    <fileset dir="/pmd/lib/">
+	    <fileset dir="pmd/lib/">
 		<include name="*.jar"/>
 	    </fileset>
 	</path>
@@ -37,7 +37,9 @@
 		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
 		<pmd shortFilenames="true">
 			<ruleset>rulesets/apex/complexity.xml</ruleset>
-			<formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="pmd_report.html" toConsole="true"/>
+			<formatter type="html" toFile="pmd_report.html" toConsole="true">
+		    		<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
+        		</formatter>
 			<fileset dir="src/src">
 			      <include name="**/*.java"/>
 			</fileset>
