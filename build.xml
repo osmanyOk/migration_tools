@@ -25,43 +25,28 @@
 	  <sf:deploy username="${username}" password="${password}" serverurl="${serverurl}" testlevel="${testlevel}" deployRoot="src/src"/>
 	</target>
 
-	<target name="testpmd" depends="testgulp">
-	    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
-		<pmd shortFilenames="true">	
-		    <ruleset>rulesets/apex/complexity.xml</ruleset>
-		    <formatter type="html" toFile="pmd_report.html" toConsole="true"/>
-		    <fileset dir="src/src">
-			<include name="**/*.cls"/>
-		    </fileset>
-		</pmd>
-	</target>
+	<path id="pmd.classpath">
+	    <pathelement location="${build}"/>
+	    <fileset dir="/pmd/lib/">
+		<include name="*.jar"/>
+	    </fileset>
+	</path>
+	
 
-	<target name="testgulp">
-		
+	<target name="testpmd" depends="testgulp">
+		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+		<pmd shortFilenames="true">
+			<ruleset>rulesets/apex/complexity.xml</ruleset>
+			<formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="pmd_report.html" toConsole="true"/>
+			<fileset dir="src/src">
+			      <include name="**/*.java"/>
+			</fileset>
+	        </pmd>
+	  </target>	
+	
+	<target name="testgulp">		
 		<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}/testGulp">
 			<arg line="demo"/>
-		</exec>	
-		
+		</exec>			
 	</target>
 </project>
-
-
-<!--
-<path id="pmd.classpath">
-    <pathelement location="${build}"/>
-    <fileset dir="/path/to/my/pmd/lib/">
-        <include name="*.jar"/>
-    </fileset>
-</path>
-
-<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
-
-<target name="pmd">
-      <pmd rulesetfiles="rulesets/favorites.xml">
-          <formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="foo.html"/>
-          <fileset dir="/path/to/java/src">
-              <include name="**/*.java"/>
-          </fileset>
-      </pmd>
-  </target>
--->
