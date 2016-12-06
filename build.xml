@@ -42,3 +42,24 @@
 		</exec>	
 	</target>
 </project>
+
+
+<!--
+<path id="pmd.classpath">
+    <pathelement location="${build}"/>
+    <fileset dir="/path/to/my/pmd/lib/">
+        <include name="*.jar"/>
+    </fileset>
+</path>
+
+<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+
+<target name="pmd">
+      <pmd rulesetfiles="rulesets/favorites.xml">
+          <formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="foo.html"/>
+          <fileset dir="/path/to/java/src">
+              <include name="**/*.java"/>
+          </fileset>
+      </pmd>
+  </target>
+-->
