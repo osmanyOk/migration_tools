@@ -37,9 +37,11 @@
 	</target>
 
 	<target name="testgulp">
+		
 		<exec vmlauncher="false" executable="gulp" osfamily="unix" dir="${basedir}/testGulp">
 			<arg line="demo"/>
 		</exec>	
+		
 	</target>
 </project>
 
