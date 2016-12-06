@@ -41,7 +41,7 @@
 		    		<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
         		</formatter>
 			<fileset dir="src/src">
-			      <include name="**/*.java"/>
+			      <include name="**/*.cls"/>
 			</fileset>
 	        </pmd>
 	  </target>	
