@@ -37,7 +37,10 @@
 		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
 		<pmd shortFilenames="true">
 			<ruleset>rulesets/apex/complexity.xml</ruleset>
-			<formatter type="xml" toFile="pmd.xml" toConsole="true">
+			<ruleset>rulesets/apex/style.xml</ruleset>
+			<ruleset>rulesets/apex/apexunit.xml</ruleset>
+			<ruleset>rulesets/apex/performance.xml</ruleset>
+			<formatter type="html" toFile="pmd_apex.html" toConsole="true">
 		    		<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
         		</formatter>
 			<fileset dir="src/src">
