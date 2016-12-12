@@ -35,10 +35,10 @@
 	<target name="pmdJs" depends="pmdApex">
 		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
 		<pmd shortFilenames="true">
-			<ruleset>rulesets/apex/basic.xml</ruleset>
-			<ruleset>rulesets/apex/braces.xml</ruleset>
-			<ruleset>rulesets/apex/controversial.xml</ruleset>
-			<ruleset>rulesets/apex/unnecessary.xml</ruleset>
+			<ruleset>rulesets/ecmascript/basic.xml</ruleset>
+			<ruleset>rulesets/ecmascript/braces.xml</ruleset>
+			<ruleset>rulesets/ecmascript/controversial.xml</ruleset>
+			<ruleset>rulesets/ecmascript/unnecessary.xml</ruleset>
 			<formatter type="html" toFile="pmd_js.html" toConsole="true">
 		    		<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
         		</formatter>
