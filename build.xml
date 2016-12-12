@@ -18,7 +18,7 @@
         </classpath>
     </taskdef>
 	
-	<target name="deploy" depends="pmdJs">
+	<target name="deploy" depends="PMD_JavaScript">
 		<replace file="src/src/package.xml"
 			 token="&lt;namespacePrefix&gt;ts2sourcing&lt;/namespacePrefix&gt;"
 			 value="" />	    
@@ -32,7 +32,7 @@
 	    </fileset>
 	</path>
 	
-	<target name="pmdJs" depends="pmdApex">
+	<target name="PMD_JavaScript" depends="PMD_Apex">
 		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
 		<pmd shortFilenames="true">
 			<ruleset>rulesets/ecmascript/basic.xml</ruleset>
@@ -42,14 +42,14 @@
 			<formatter type="html" toFile="pmd_js.html" toConsole="true">
 		    		<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
         		</formatter>
-			<fileset dir="src/src">
+			<fileset dir="src">
 			      <include name="**/*.js"/>
 			</fileset>
 	        </pmd>
 	  </target>
 	
 	
-	<target name="pmdApex" depends="testgulp">
+	<target name="PMD_Apex" depends="testgulp">
 		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
 		<pmd shortFilenames="true">
 			<ruleset>rulesets/apex/complexity.xml</ruleset>
